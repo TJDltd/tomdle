@@ -1,5 +1,8 @@
+from english_words import get_english_words_set
+
 from tomdle_base import GuessResult, LetterResult, TomdleBase, WordResult
 
+WEB2LOWERSET = get_english_words_set(["web2"], lower=True, alpha=True)
 
 class Tomdle(TomdleBase):
     """Tomdle game implementation.
@@ -18,9 +21,12 @@ class Tomdle(TomdleBase):
     def _generate_words(self, count: int, length: int) -> None:
         self._words = [self._generate_word(length) for _ in range(count)]
 
-    def _generate_word(self, _: int) -> str:
-        # Placeholder for word generation logic
-        return "apple"
+    def _generate_word(self, length: int) -> str:
+        word = ""
+        while len(word) != length:
+            word = WEB2LOWERSET.pop()
+
+        return word
 
     def _compare_words(self, guess: str, target: str) -> WordResult:
         if len(guess) != len(target):
