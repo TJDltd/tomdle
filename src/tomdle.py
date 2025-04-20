@@ -10,11 +10,12 @@ class Tomdle(TomdleBase):
     Stores game state and allows guessing target words.
     """
 
-    def __init__(self, word_count: int = 1, word_length: int = 5) -> None:
+    def __init__(self, word_count: int = 1, word_length: int = 5, max_guesses: int = 6) -> None:
         self._guesses = []
         self._words = []
         self._word_count = word_count
         self._word_length = word_length
+        self._max_guesses = max_guesses
 
         self._generate_words(word_count, word_length)
 
@@ -60,6 +61,11 @@ class Tomdle(TomdleBase):
         if not guess.isalpha():
             m = "Guess must only contain letters."
             raise ValueError(m)
+        if len(self._guesses) >= self._max_guesses:
+            m = "Maximum number of guesses reached."
+            raise ValueError(m)
+
+        self._guesses.append(guess)
 
         word_results = []
         for idx, _ in enumerate(self._words):
