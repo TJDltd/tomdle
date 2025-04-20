@@ -43,7 +43,7 @@ class Tomdle(TomdleBase):
             else:
                 letter_results.append(LetterResult.INCORRECT)
 
-        return WordResult(letter_results=letter_results)
+        return WordResult(letter_results=letter_results, target_word=target)
 
     def add_guess(self, guess: str) -> GuessResult:
         """Add a guess to the game and return the result.

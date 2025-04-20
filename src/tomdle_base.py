@@ -11,6 +11,7 @@ class LetterResult(enum.Enum):
 
 class WordResult(pydantic.BaseModel):
     letter_results: list[LetterResult]
+    target_word: str
 
 class GuessResult(pydantic.BaseModel):
     word_results: list[WordResult]
