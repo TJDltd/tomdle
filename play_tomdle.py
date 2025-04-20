@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 from src.tomdle import Tomdle
 from src.tomdle_base import LetterResult, WordResult
 
