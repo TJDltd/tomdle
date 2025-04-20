@@ -15,7 +15,7 @@ class Tomdle(TomdleBase):
         self._words = []
         self._word_count = word_count
         self._word_length = word_length
-        self._max_guesses = max_guesses
+        self.max_guesses = max_guesses
 
         self._generate_words(word_count, word_length)
 
@@ -61,9 +61,13 @@ class Tomdle(TomdleBase):
         if not guess.isalpha():
             m = "Guess must only contain letters."
             raise ValueError(m)
-        if len(self._guesses) >= self._max_guesses:
+        if len(self._guesses) >= self.max_guesses:
             m = "Maximum number of guesses reached."
             raise ValueError(m)
+        if guess in self._guesses:
+            print("Guess has already been made.")
+        if guess not in WEB2LOWERSET:
+            print("Guess is not a valid word.")
 
         self._guesses.append(guess)
 

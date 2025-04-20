@@ -3,4 +3,4 @@ target-version = "py313"
 
 [lint]
 select = ["ALL"]
-ignore = ["D100", "D107"]
+ignore = ["D100", "D107", "T201"]
