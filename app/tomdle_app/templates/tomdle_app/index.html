@@ -1,0 +1,9 @@
+{% if latest_answers %}
+    <ul>
+    {% for answer in latest_answers %}
+        <li><a href="/tomdle/{{ answer.pub_date }}{{ answer.id }}/">{{ answer.pub_date }}{{ answer.id }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No games are available.</p>
+{% endif %}
